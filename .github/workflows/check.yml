@@ -87,6 +87,7 @@ jobs:
       - name: Install and setup DCOR
         run: |
           pip3 install dcor_control
+          pip install "rq==2.10.0"  # trial: released dcor_schemas pins rq<2
 
           # use test-core.ini as default
           cp /srv/app/src/ckan/test-core.ini /srv/app/ckan.ini
@@ -103,12 +104,14 @@ jobs:
         if: matrix.dcor_control == 'develop'
         run: |
           dcor develop --yes
+          pip install "rq==2.10.0"  # trial: released dcor_schemas pins rq<2
           dcor inspect --assume-yes
 
       - name: Install extension and requirements
         run: |
           pip install -e .
           pip install -r ./tests/requirements.txt
+          pip install "rq==2.10.0"  # trial: released dcor_schemas pins rq<2
 
       - name: Run tests
         run: |
