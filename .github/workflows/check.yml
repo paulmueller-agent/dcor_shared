@@ -104,6 +104,7 @@ jobs:
         if: matrix.dcor_control == 'develop'
         run: |
           dcor develop --yes
+          pip install --no-deps --force-reinstall "git+https://github.com/paulmueller-agent/ckanext-dcor_schemas.git@validate-resource-name-by-id"  # trial
           pip install "rq==2.10.0"  # trial: released dcor_schemas pins rq<2
           dcor inspect --assume-yes
 
