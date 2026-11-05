@@ -19,7 +19,7 @@ jobs:
   test:
     strategy:
       matrix:
-        ckan-version: ["2.11"]
+        ckan-version: ["2.12"]
         dcor_control: ["develop", "pypi"]
       fail-fast: false
 
